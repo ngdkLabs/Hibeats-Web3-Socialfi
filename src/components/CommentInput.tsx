@@ -275,15 +275,27 @@ const CommentInput = ({
       
       if (address && postAuthor && postId && address.toLowerCase() !== postAuthor.toLowerCase()) {
         try {
-          console.log('🔔 [COMMENT] Sending notification...');
+          console.log('🔔 [COMMENT] Sending comment notification...');
           const { notificationService } = await import('@/services/notificationService');
           await notificationService.notifyComment(address, postAuthor, postId, comment);
-          console.log('✅ [COMMENT] Notification sent successfully to:', postAuthor);
+          console.log('✅ [COMMENT] Comment notification sent to:', postAuthor);
         } catch (error) {
-          console.error('❌ [COMMENT] Failed to send notification:', error);
+          console.error('❌ [COMMENT] Failed to send comment notification:', error);
         }
       } else {
-        console.log('⚠️ [COMMENT] Notification not sent - conditions not met');
+        console.log('⚠️ [COMMENT] Comment notification not sent - conditions not met');
+      }
+      
+      // 🔔 Send mention notifications
+      if (address && postId) {
+        try {
+          console.log('🔔 [COMMENT] Checking for mentions...');
+          const { sendMentionNotifications } = await import('@/utils/mentionHelper');
+          await sendMentionNotifications(comment, address, postId, allUsers);
+          console.log('✅ [COMMENT] Mention notifications processed');
+        } catch (error) {
+          console.error('❌ [COMMENT] Failed to send mention notifications:', error);
+        }
       }
     }
   };

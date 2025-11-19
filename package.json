@@ -17,7 +17,8 @@
     "test:play-events": "npx tsx scripts/testPlayEvents.ts",
     "verify:schemas": "npx tsx scripts/verifyAllSchemas.ts",
     "register:bxp": "npx tsx scripts/registerBXPSchemas.ts",
-    "test:bxp": "npx tsx scripts/testBXPSystem.ts"
+    "test:bxp": "npx tsx scripts/testBXPSystem.ts",
+    "test:mention": "npx tsx scripts/testMentionNotification.ts"
   },
   "dependencies": {
     "@0xsequence/connect": "^5.3.29",

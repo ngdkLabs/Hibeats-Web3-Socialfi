@@ -785,6 +785,24 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
       
       console.log('✅ Post submitted successfully');
       
+      // 🔔 Send mention notifications (non-blocking)
+      if (smartAccountAddress && contentToPost) {
+        try {
+          console.log('🔔 [POST] Checking for mentions in post...');
+          const { sendMentionNotifications } = await import('@/utils/mentionHelper');
+          
+          // Generate temporary post ID (will be replaced with actual post ID from blockchain)
+          const tempPostId = `post_${Date.now()}_${smartAccountAddress}`;
+          
+          // Send mention notifications in background
+          sendMentionNotifications(contentToPost, smartAccountAddress, tempPostId, allUsers)
+            .then(() => console.log('✅ [POST] Mention notifications sent'))
+            .catch(error => console.error('❌ [POST] Failed to send mention notifications:', error));
+        } catch (error) {
+          console.error('❌ [POST] Failed to process mentions:', error);
+        }
+      }
+      
       toast.success('✅ Post created!');
     } catch (error) {
       console.error('❌ Error submitting post:', error);
