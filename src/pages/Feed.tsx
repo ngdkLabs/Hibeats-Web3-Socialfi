@@ -770,6 +770,10 @@ const Feed = () => {
         // New posts detected during auto-refresh
         // DON'T update cache yet - just show notification
         console.log('🔔 [AUTO-REFRESH] New posts detected, showing notification only');
+        // Invalidate cache freshness so the next manual refresh pulls fresh data
+        feedCacheTimestampRef.current = 0;
+        setIsFeedCacheFresh(false);
+        sessionStorage.removeItem(FEED_CACHE_KEY);
         setTotalPostsFromBlockchain(newTotalPosts);
         setIsAutoRefreshing(false);
         return; // Exit early - don't update cache
@@ -966,7 +970,7 @@ const Feed = () => {
     // Update ref to current blockchain count to prevent re-triggering
     lastBlockchainCountRef.current = totalPostsFromBlockchain;
     
-    loadFeed(false); // Pass false for manual refresh - will update cache
+    loadFeed(false, undefined, true); // Force network reload to fetch new posts
   }, [totalPostsFromBlockchain]);
 
   // Clear new posts notification
