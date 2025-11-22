@@ -284,7 +284,7 @@ const Feed = () => {
   // Scroll detection for showing/hiding new posts button
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  
+
   // Enhanced scroll position restoration with multiple fallbacks
   const SCROLL_POSITION_KEY = 'hibeats_feed_scroll_position';
   const SCROLL_TIMESTAMP_KEY = 'hibeats_feed_scroll_timestamp';
@@ -293,6 +293,12 @@ const Feed = () => {
   const scrollRestoredRef = useRef(false);
   const lastScrollYRef = useRef(0);
   const scrollSaveTimeoutRef = useRef<NodeJS.Timeout>();
+
+  // Feed cache keys
+  const FEED_CACHE_KEY = 'hibeats_feed_cache_v1';
+  const FEED_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+  const feedCacheTimestampRef = useRef(0);
+  const [isFeedCacheFresh, setIsFeedCacheFresh] = useState(false);
 
   const [loadingStates, setLoadingStates] = useState<{[key: string]: boolean}>({});
   const [recentTransactions, setRecentTransactions] = useState<{txHash: string, type: string, timestamp: number}[]>([]);
@@ -327,9 +333,13 @@ const Feed = () => {
   // Auto-load feed when ready
   useEffect(() => {
     if (isAccountReady && smartAccountAddress && isSDKInitialized) {
+      if (isFeedCacheFresh) {
+        console.log('💾 [CACHE] Using fresh feed cache, skipping immediate reload');
+        return;
+      }
       loadFeed();
     }
-  }, [isAccountReady, smartAccountAddress, isSDKInitialized]);
+  }, [isAccountReady, smartAccountAddress, isSDKInitialized, isFeedCacheFresh]);
 
   // Setup auto-refresh callback for cache
   useEffect(() => {
@@ -338,6 +348,70 @@ const Feed = () => {
       loadFeed();
     });
   }, [socialCache]);
+
+  // Restore feed cache when available to avoid refetch when returning to tab
+  useEffect(() => {
+    try {
+      const cachedFeed = sessionStorage.getItem(FEED_CACHE_KEY);
+      if (!cachedFeed) return;
+
+      const parsedCache = JSON.parse(cachedFeed);
+      const age = Date.now() - (parsedCache.timestamp || 0);
+
+      if (age > FEED_CACHE_TTL) {
+        sessionStorage.removeItem(FEED_CACHE_KEY);
+        return;
+      }
+
+      const cachedPosts = parsedCache.posts || [];
+      const cachedComments = parsedCache.comments || {};
+      const cachedLikes = parsedCache.likes || {};
+      const cachedReposts = parsedCache.reposts || {};
+      const cachedUserLikes = new Set(parsedCache.userLikes || []);
+      const cachedUserReposts = new Set(parsedCache.userReposts || []);
+      const cachedAllPostsData = parsedCache.allPostsData || [];
+      const cachedDisplayCount = Math.min(
+        parsedCache.displayedPostsCount || 20,
+        cachedPosts.length || 20
+      );
+
+      socialCache.initializeCache(
+        cachedPosts,
+        cachedComments,
+        cachedLikes,
+        cachedReposts,
+        cachedUserLikes,
+        cachedUserReposts
+      );
+
+      setAllPostsData(cachedAllPostsData);
+      setDisplayedPostsCount(cachedDisplayCount);
+      displayedPostsCountRef.current = cachedDisplayCount;
+      setTotalPostsFromBlockchain(parsedCache.totalPostsFromBlockchain || cachedAllPostsData.length || cachedPosts.length || 0);
+
+      feedCacheTimestampRef.current = parsedCache.timestamp;
+      setIsFeedCacheFresh(true);
+      console.log('💾 [CACHE] Restored feed from session cache');
+    } catch (error) {
+      console.warn('⚠️ [CACHE] Failed to restore feed cache:', error);
+    }
+  }, [socialCache]);
+
+  // Invalidate cache freshness when TTL expires
+  useEffect(() => {
+    if (!isFeedCacheFresh || !feedCacheTimestampRef.current) return;
+
+    const timeSinceCache = Date.now() - feedCacheTimestampRef.current;
+    const remaining = FEED_CACHE_TTL - timeSinceCache;
+
+    if (remaining <= 0) {
+      setIsFeedCacheFresh(false);
+      return;
+    }
+
+    const timeout = setTimeout(() => setIsFeedCacheFresh(false), remaining);
+    return () => clearTimeout(timeout);
+  }, [isFeedCacheFresh]);
   
   // Enhanced scroll position saving with throttling and metadata
   useEffect(() => {
@@ -472,8 +546,28 @@ const Feed = () => {
   }, [posts.length]);
 
   // Load feed from DataStream using V3 service (sama seperti DataStreamSocialTestV3)
-  const loadFeed = async (isAutoRefresh = false) => {
+  const loadFeed = async (
+    isAutoRefresh = false,
+    targetDisplayCount?: number,
+    forceNetworkReload = false
+  ) => {
     if (!smartAccountAddress) return;
+
+    // Serve fresh cache without reloading when possible
+    const now = Date.now();
+    const isCacheFresh =
+      !!feedCacheTimestampRef.current &&
+      now - feedCacheTimestampRef.current < FEED_CACHE_TTL;
+    const cachedPostCount = socialCache.cache.posts.length;
+
+    if (!isAutoRefresh && !forceNetworkReload && isCacheFresh && cachedPostCount > 0 && (!targetDisplayCount || targetDisplayCount <= cachedPostCount)) {
+      if (targetDisplayCount && targetDisplayCount !== displayedPostsCount) {
+        setDisplayedPostsCount(targetDisplayCount);
+        displayedPostsCountRef.current = targetDisplayCount;
+      }
+      console.log('💾 [CACHE] Served feed from cache without reload');
+      return;
+    }
 
     // Set appropriate loading state
     if (isAutoRefresh) {
@@ -481,7 +575,7 @@ const Feed = () => {
     } else {
       setFeedLoading(true);
     }
-    const startTime = Date.now();
+    const startTime = now;
     
     try {
       console.log('🚀 [V3-FEED] Starting feed load...');
@@ -680,6 +774,10 @@ const Feed = () => {
         // New posts detected during auto-refresh
         // DON'T update cache yet - just show notification
         console.log('🔔 [AUTO-REFRESH] New posts detected, showing notification only');
+        // Invalidate cache freshness so the next manual refresh pulls fresh data
+        feedCacheTimestampRef.current = 0;
+        setIsFeedCacheFresh(false);
+        sessionStorage.removeItem(FEED_CACHE_KEY);
         setTotalPostsFromBlockchain(newTotalPosts);
         setIsAutoRefreshing(false);
         return; // Exit early - don't update cache
@@ -690,8 +788,8 @@ const Feed = () => {
       
       // Preserve displayed count if refreshing, otherwise reset to 20
       // Use ref to get latest value (important for auto-refresh)
-      const currentDisplayed = displayedPostsCountRef.current;
-      const postsToShow = Math.min(currentDisplayed > 20 ? currentDisplayed : 20, sortedAllPosts.length);
+      const desiredDisplayCount = targetDisplayCount ?? displayedPostsCountRef.current;
+      const postsToShow = Math.min(desiredDisplayCount > 20 ? desiredDisplayCount : 20, sortedAllPosts.length);
       setDisplayedPostsCount(postsToShow);
       displayedPostsCountRef.current = postsToShow; // Update ref immediately
       
@@ -792,7 +890,30 @@ const Feed = () => {
         userLikesSetStr,
         userRepostsSetStr
       );
-      
+
+      // Cache feed to avoid reload when returning to tab
+      try {
+        const cachePayload = {
+          timestamp: Date.now(),
+          posts: postsToCache,
+          comments: commentsByPost,
+          likes: likesByPost,
+          reposts: repostsByPost,
+          userLikes: Array.from(userLikesSetStr),
+          userReposts: Array.from(userRepostsSetStr),
+          allPostsData: sortedAllPosts,
+          displayedPostsCount: postsToShow,
+          totalPostsFromBlockchain: newTotalPosts,
+        };
+
+        sessionStorage.setItem(FEED_CACHE_KEY, JSON.stringify(cachePayload));
+        feedCacheTimestampRef.current = cachePayload.timestamp;
+        setIsFeedCacheFresh(true);
+        console.log('💾 [CACHE] Saved feed to session storage');
+      } catch (error) {
+        console.warn('⚠️ [CACHE] Failed to save feed cache:', error);
+      }
+
       // Silent load - no toast notifications for clean UX
     } catch (error: any) {
       console.error('❌ Failed to load feed:', error);
@@ -821,7 +942,9 @@ const Feed = () => {
       setDisplayedPostsCount(newDisplayCount);
       
       // Trigger a re-render by calling loadFeed which will preserve the new displayedPostsCount
-      await loadFeed();
+      // Ensure the desired display count is preserved during reload
+      displayedPostsCountRef.current = newDisplayCount;
+      await loadFeed(false, newDisplayCount);
       
       console.log('✅ Now showing', newDisplayCount, 'posts');
     } catch (error) {
@@ -851,7 +974,7 @@ const Feed = () => {
     // Update ref to current blockchain count to prevent re-triggering
     lastBlockchainCountRef.current = totalPostsFromBlockchain;
     
-    loadFeed(false); // Pass false for manual refresh - will update cache
+    loadFeed(false, undefined, true); // Force network reload to fetch new posts
   }, [totalPostsFromBlockchain]);
 
   // Clear new posts notification
