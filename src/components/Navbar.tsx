@@ -90,11 +90,11 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/20 bg-background/80 backdrop-blur-md">
-        <div className="container mx-auto px-6">
-          <div className="flex items-center h-16">
+        <div className="page-shell">
+          <div className="flex flex-wrap items-center gap-3 lg:gap-6 py-3">
             {/* Logo and Navigation */}
-            <div className="flex items-center gap-8">
-              <Link to="/" className="flex items-center">
+            <div className="flex items-center gap-4 lg:gap-6 min-w-0">
+              <Link to="/" className="flex items-center shrink-0">
                 <img
                   src={hibeatsLogo}
                   alt="HiBeats"
@@ -103,7 +103,7 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
               </Link>
 
               {/* Navigation Menu */}
-              <nav className="hidden md:flex items-center gap-6">
+              <nav className="hidden md:flex items-center gap-4 lg:gap-6 flex-wrap">
                 {navItems.map((item) => {
                   const isActive = location.pathname === item.path;
                   return (
@@ -124,9 +124,9 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
             </div>
 
             {/* Center Section - Search */}
-            <div className="flex-1 flex items-center justify-center mx-8">
+            <div className="order-3 w-full md:order-none md:flex-1 md:flex md:items-center md:justify-center">
               {/* Search Bar */}
-              <div className="hidden md:flex max-w-md flex-1">
+              <div className="hidden md:flex w-full max-w-lg">
                 <div className="relative w-full">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                   <Input
@@ -138,7 +138,7 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
             </div>
 
             {/* Profile & Post Button */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 ml-auto">
               {/* Wallet Button */}
               {isAuthenticated && (
                 <Button
@@ -314,6 +314,18 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
               </Link>
             );
           })}
+
+          {isAuthenticated && (
+            <Link
+              to="/messages"
+              className={`flex flex-col items-center gap-1 p-2 transition-colors ${
+                location.pathname === '/messages' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              <Mail className="w-5 h-5" />
+              <span className="text-xs">Messages</span>
+            </Link>
+          )}
           {showCreateSongButton && isAuthenticated && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

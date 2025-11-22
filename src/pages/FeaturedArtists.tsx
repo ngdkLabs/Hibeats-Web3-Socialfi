@@ -329,8 +329,8 @@ const FeaturedArtists = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-16">
-        <div className="container mx-auto px-6 py-6">
+      <main className="page-main">
+        <div className="page-shell py-6">
           {/* Header */}
           <div className="mb-8">
             <h1 className="font-clash font-semibold text-3xl mb-1">Featured Artists</h1>
