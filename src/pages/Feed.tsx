@@ -472,7 +472,7 @@ const Feed = () => {
   }, [posts.length]);
 
   // Load feed from DataStream using V3 service (sama seperti DataStreamSocialTestV3)
-  const loadFeed = async (isAutoRefresh = false) => {
+  const loadFeed = async (isAutoRefresh = false, targetDisplayCount?: number) => {
     if (!smartAccountAddress) return;
 
     // Set appropriate loading state
@@ -690,8 +690,8 @@ const Feed = () => {
       
       // Preserve displayed count if refreshing, otherwise reset to 20
       // Use ref to get latest value (important for auto-refresh)
-      const currentDisplayed = displayedPostsCountRef.current;
-      const postsToShow = Math.min(currentDisplayed > 20 ? currentDisplayed : 20, sortedAllPosts.length);
+      const desiredDisplayCount = targetDisplayCount ?? displayedPostsCountRef.current;
+      const postsToShow = Math.min(desiredDisplayCount > 20 ? desiredDisplayCount : 20, sortedAllPosts.length);
       setDisplayedPostsCount(postsToShow);
       displayedPostsCountRef.current = postsToShow; // Update ref immediately
       
@@ -821,7 +821,9 @@ const Feed = () => {
       setDisplayedPostsCount(newDisplayCount);
       
       // Trigger a re-render by calling loadFeed which will preserve the new displayedPostsCount
-      await loadFeed();
+      // Ensure the desired display count is preserved during reload
+      displayedPostsCountRef.current = newDisplayCount;
+      await loadFeed(false, newDisplayCount);
       
       console.log('✅ Now showing', newDisplayCount, 'posts');
     } catch (error) {
