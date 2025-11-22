@@ -20,8 +20,8 @@ const Footer = () => {
   return (
     <footer className="bg-muted/30 border-t border-border/20">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12">
           {/* Platform Overview */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -110,7 +110,7 @@ const Footer = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12">
           <Card className="border-border/30 bg-background/50">
             <CardContent className="p-4 text-center">
               <div className="text-2xl font-clash font-semibold text-primary mb-1">10K+</div>
@@ -163,12 +163,12 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-border/20">
-        <div className="container mx-auto px-6 py-6">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span>© 2025 HiBeats. All rights reserved.</span>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground text-center md:text-left">
+              <span className="leading-snug">© 2025 HiBeats. All rights reserved.</span>
             </div>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 sm:gap-6 text-sm text-muted-foreground">
               <Button variant="link" className="p-0 h-auto text-sm">
                 Privacy Policy
               </Button>
