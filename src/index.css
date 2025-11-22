@@ -109,6 +109,16 @@ All colors MUST be HSL.
   }
 }
 
+@layer components {
+  .page-main {
+    @apply pt-16 pb-24 lg:pb-16;
+  }
+
+  .page-shell {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
 @layer utilities {
   .scrollbar-hide {
     -ms-overflow-style: none;  /* Internet Explorer 10+ */

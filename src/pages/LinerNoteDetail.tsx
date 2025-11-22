@@ -245,8 +245,8 @@ const LinerNoteDetail = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <main className="pt-16">
-          <div className="container mx-auto px-6 py-12">
+        <main className="page-main">
+          <div className="page-shell py-12">
             <div className="text-center">
               <BookOpen className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
               <h1 className="font-clash font-semibold text-2xl mb-2">Note Not Found</h1>
@@ -269,8 +269,8 @@ const LinerNoteDetail = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-16">
-        <div className="container mx-auto px-6 py-6 max-w-4xl">
+      <main className="page-main">
+        <div className="page-shell py-6 max-w-4xl">
           {/* Back Button */}
           <div className="mb-6">
             <Button variant="ghost" asChild className="gap-2">
