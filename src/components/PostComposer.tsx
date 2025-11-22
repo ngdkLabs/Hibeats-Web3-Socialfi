@@ -1412,7 +1412,7 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
             )}
 
             <div className="flex flex-col gap-3 mt-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap gap-2">
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -1499,7 +1499,7 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                 </Button>
               </div>
 
-              <div className="flex items-center gap-2 sm:justify-end sm:flex-1 sm:flex-row flex-wrap">
+              <div className="flex items-center gap-2 sm:justify-end sm:flex-1 sm:flex-row">
                 {uploadProgress && (
                   <span className="text-xs text-muted-foreground">
                     {uploadProgress}
@@ -1533,7 +1533,7 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                     attachments.some(att => att.uploading) ||
                     attachments.some(att => att.uploadFailed)
                   }
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 h-9 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                   title={
                     attachments.some(att => att.uploading)
                       ? 'Waiting for uploads to complete...'
