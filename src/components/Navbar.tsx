@@ -296,8 +296,8 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
       </header>
 
       {/* Mobile Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-md border-t border-border/20 lg:hidden">
-        <div className="flex items-center justify-around py-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-md border-t border-border/20 lg:hidden z-40">
+        <div className="flex items-center justify-around py-2 pb-[env(safe-area-inset-bottom)]">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;

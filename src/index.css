@@ -111,7 +111,8 @@ All colors MUST be HSL.
 
 @layer components {
   .page-main {
-    @apply pt-16 pb-24 lg:pb-16;
+    @apply pt-16 pb-32 lg:pb-16;
+    padding-bottom: calc(theme(spacing.32) + env(safe-area-inset-bottom));
   }
 
   .page-shell {
