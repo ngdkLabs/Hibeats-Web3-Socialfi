@@ -338,7 +338,7 @@ export default function MyCollection() {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <main className="pt-16">
+      <main className="page-main">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-8 flex items-start justify-between">

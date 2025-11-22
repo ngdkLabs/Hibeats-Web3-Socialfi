@@ -130,23 +130,23 @@ const Dashboard = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-16">
-        <div className="container mx-auto px-6 py-6">
+      <main className="page-main">
+        <div className="page-shell py-6">
           {/* Header */}
           <div className="mb-8">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <h1 className="font-clash font-semibold text-4xl mb-2">Dashboard</h1>
                 <p className="text-muted-foreground text-lg">Welcome back, {userProfile?.name || "Artist"}!</p>
               </div>
-              <div className="flex gap-3">
-                <Button variant="outline" asChild>
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                <Button variant="outline" asChild className="w-full sm:w-auto">
                   <Link to="/settings">
                     <Settings className="w-4 h-4 mr-2" />
                     Settings
                   </Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="w-full sm:w-auto">
                   <Link to="/create">
                     <Edit className="w-4 h-4 mr-2" />
                     Create Track

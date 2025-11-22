@@ -461,8 +461,8 @@ const Explore = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-16">
-        <div className="container mx-auto px-6 py-6">
+      <main className="page-main">
+        <div className="page-shell py-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Content */}
             <div className="lg:col-span-2">
