@@ -1512,6 +1512,7 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                 )}
                 <Button
                   type="button"
+                  size="sm"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -1538,12 +1539,12 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                       ? 'Waiting for uploads to complete...'
                       : attachments.some(att => att.uploadFailed)
                         ? 'Some uploads failed, please remove and try again'
-                        : !isAccountReady 
-                          ? 'Please connect your wallet first' 
-                          : !canPost 
-                            ? 'Add content or attachments to post' 
-                            : content.length > 280 
-                              ? 'Content exceeds 280 characters' 
+                        : !isAccountReady
+                          ? 'Please connect your wallet first'
+                          : !canPost
+                            ? 'Add content or attachments to post'
+                            : content.length > 280
+                              ? 'Content exceeds 280 characters'
                               : 'Post to blockchain'
                   }
                 >

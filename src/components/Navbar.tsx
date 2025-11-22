@@ -314,6 +314,18 @@ const Navbar = ({ showCreateSongButton = true }: NavbarProps) => {
               </Link>
             );
           })}
+
+          {isAuthenticated && (
+            <Link
+              to="/messages"
+              className={`flex flex-col items-center gap-1 p-2 transition-colors ${
+                location.pathname === '/messages' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              <Mail className="w-5 h-5" />
+              <span className="text-xs">Messages</span>
+            </Link>
+          )}
           {showCreateSongButton && isAuthenticated && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
