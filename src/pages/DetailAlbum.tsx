@@ -387,11 +387,11 @@ const DetailAlbum = () => {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="pt-16 pb-4">
-          <div className="container mx-auto px-6">
+          <div className="page-shell">
             <Skeleton className="h-10 w-32" />
           </div>
         </div>
-        <div className="container mx-auto px-6 py-8">
+        <div className="page-shell py-8">
           <div className="flex gap-8">
             <Skeleton className="w-56 h-56 rounded-lg" />
             <div className="flex-1 space-y-4">
@@ -409,7 +409,7 @@ const DetailAlbum = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <div className="pt-16 container mx-auto px-6 py-16 text-center">
+        <div className="pt-16 page-shell py-16 text-center">
           <Music className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
           <h2 className="text-2xl font-semibold mb-2">Album Not Found</h2>
           <p className="text-muted-foreground mb-4">The album you're looking for doesn't exist.</p>
@@ -427,7 +427,7 @@ const DetailAlbum = () => {
 
       {/* Back Button */}
       <div className="pt-16 pb-4">
-        <div className="container mx-auto px-6">
+        <div className="page-shell">
           <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-2">
             <ChevronLeft className="w-4 h-4" />
             Back
@@ -456,7 +456,7 @@ const DetailAlbum = () => {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-secondary/10 to-transparent rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative container mx-auto px-6 py-8 min-h-[400px] flex items-center">
+        <div className="relative page-shell py-8 min-h-[400px] flex items-center">
           <div className="flex flex-col md:flex-row gap-8 items-start w-full">
             {/* Album Cover */}
             <div className="relative">
@@ -598,7 +598,7 @@ const DetailAlbum = () => {
       </div>
 
       {/* Content Section */}
-      <div className="container mx-auto px-6 py-8">
+      <div className="page-shell py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Side - Tracks List */}
           <div className="lg:col-span-2 space-y-4">

@@ -546,11 +546,7 @@ const Feed = () => {
   }, [posts.length]);
 
   // Load feed from DataStream using V3 service (sama seperti DataStreamSocialTestV3)
-  const loadFeed = async (
-    isAutoRefresh = false,
-    targetDisplayCount?: number,
-    forceNetworkReload = false
-  ) => {
+  const loadFeed = async (isAutoRefresh = false, targetDisplayCount?: number) => {
     if (!smartAccountAddress) return;
 
     // Serve fresh cache without reloading when possible
@@ -560,7 +556,7 @@ const Feed = () => {
       now - feedCacheTimestampRef.current < FEED_CACHE_TTL;
     const cachedPostCount = socialCache.cache.posts.length;
 
-    if (!isAutoRefresh && !forceNetworkReload && isCacheFresh && cachedPostCount > 0 && (!targetDisplayCount || targetDisplayCount <= cachedPostCount)) {
+    if (!isAutoRefresh && isCacheFresh && cachedPostCount > 0 && (!targetDisplayCount || targetDisplayCount <= cachedPostCount)) {
       if (targetDisplayCount && targetDisplayCount !== displayedPostsCount) {
         setDisplayedPostsCount(targetDisplayCount);
         displayedPostsCountRef.current = targetDisplayCount;
@@ -1766,8 +1762,8 @@ const Feed = () => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="pt-16">
-        <div className="container mx-auto px-6 py-6">
+      <main className="page-main">
+        <div className="page-shell py-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Feed */}
             <div className="lg:col-span-2 space-y-4">

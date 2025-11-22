@@ -1256,7 +1256,7 @@ const UserProfile = () => {
 
       {/* Back Button */}
       <div className="pt-16 pb-4">
-        <div className="container mx-auto px-6">
+        <div className="page-shell">
           <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-2">
             <ArrowLeft className="w-4 h-4" />
             Back
@@ -1285,7 +1285,7 @@ const UserProfile = () => {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-secondary/10 to-transparent rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative container mx-auto px-6 py-8 min-h-[400px] flex items-center">
+        <div className="relative page-shell py-8 min-h-[400px] flex items-center">
           <div className="flex flex-col md:flex-row gap-8 items-start w-full">
             {/* Avatar */}
             <div className="relative">
@@ -1411,7 +1411,7 @@ const UserProfile = () => {
       </div>
 
       {/* Content Section with Tabs */}
-      <div className="container mx-auto px-6 py-8">
+      <div className="page-shell py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="w-full justify-start rounded-none border-b border-border bg-transparent h-auto p-0 overflow-x-auto flex-nowrap">
               <TabsTrigger

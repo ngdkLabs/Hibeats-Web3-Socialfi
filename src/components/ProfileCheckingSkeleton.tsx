@@ -14,7 +14,7 @@ const ProfileCheckingSkeleton = () => {
       {/* Hero Section Skeleton */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-background/50 to-background"></div>
-        <div className="container mx-auto px-6 py-32 relative z-10 text-center">
+        <div className="page-shell py-32 relative z-10 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             <Skeleton className="h-16 md:h-20 lg:h-24 w-full mx-auto" />
             <Skeleton className="h-6 w-3/4 mx-auto" />
@@ -28,7 +28,7 @@ const ProfileCheckingSkeleton = () => {
 
       {/* Partners Section Skeleton */}
       <section className="py-16 border-t border-border/20">
-        <div className="container mx-auto px-6">
+        <div className="page-shell">
           <div className="text-center mb-12">
             <Skeleton className="h-8 w-48 mx-auto mb-4" />
             <Skeleton className="h-4 w-96 mx-auto" />
@@ -44,7 +44,7 @@ const ProfileCheckingSkeleton = () => {
       {/* Marketplace Section Skeleton */}
       <section className="pt-8 pb-16 md:pb-24 relative overflow-hidden border-t border-border/20">
         <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-background/50 to-background"></div>
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="page-shell relative z-10">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-3">
@@ -180,7 +180,7 @@ const ProfileCheckingSkeleton = () => {
 
       {/* Footer Skeleton */}
       <footer className="border-t border-border/20 py-12">
-        <div className="container mx-auto px-6">
+        <div className="page-shell">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {Array.from({ length: 4 }, (_, i) => (
               <div key={i} className="space-y-4">
