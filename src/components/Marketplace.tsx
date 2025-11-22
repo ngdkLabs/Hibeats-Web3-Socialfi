@@ -98,11 +98,11 @@ const Marketplace = () => {
 
   return (
     <div className="relative">
-      <section className="pt-8 pb-16 md:pb-24 relative overflow-hidden border-t border-border/20">
+      <section className="pt-10 sm:pt-12 pb-16 md:pb-24 relative overflow-hidden border-t border-border/20">
       {/* Smooth transition background */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-background/50 to-background"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-3">
@@ -122,7 +122,7 @@ const Marketplace = () => {
             <TrendingUp className="w-4 h-4 text-primary" />
             <h3 className="font-clash font-semibold text-xl">Trending Now</h3>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {tracks.slice(0, 4).map((track) => (
               <Card key={track.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/30">
                 <CardContent className="p-3">
@@ -156,20 +156,20 @@ const Marketplace = () => {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+              ))}
           </div>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Social Feed - Left Side */}
           <div className="lg:col-span-2">
             <div className="space-y-4">
               {tracks.map((track) => (
                 <Card key={track.id} className="border-border/50 hover:border-primary/20 transition-all duration-300">
-                  <CardContent className="p-4">
+                  <CardContent className="p-4 sm:p-5 space-y-3">
                     {/* User Info */}
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       <Avatar className="w-8 h-8">
                         <AvatarImage src="" />
                         <AvatarFallback className="bg-primary/10 text-primary font-semibold text-xs">
@@ -177,9 +177,9 @@ const Marketplace = () => {
                         </AvatarFallback>
                       </Avatar>
                       <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-sm">{track.artist}</span>
-                          <Badge variant="outline" className="text-xs px-1.5 py-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-semibold text-sm leading-none">{track.artist}</span>
+                          <Badge variant="outline" className="text-xs px-1.5 py-0 whitespace-nowrap">
                             {track.genre}
                           </Badge>
                         </div>
@@ -191,16 +191,16 @@ const Marketplace = () => {
                     </div>
 
                     {/* Track Description */}
-                    <p className="text-sm mb-3 leading-relaxed">{track.description}</p>
+                    <p className="text-sm leading-relaxed">{track.description}</p>
 
                     {/* Music Player Card */}
                     <Card className="mb-3 border-border/30 bg-muted/30">
-                      <CardContent className="p-3">
+                      <CardContent className="p-3 sm:p-4">
                         <div className="flex items-center gap-3">
                           <img
                             src={track.cover}
                             alt={track.title}
-                            className="w-12 h-12 rounded-md object-cover"
+                            className="w-12 h-12 rounded-md object-cover flex-shrink-0"
                           />
                           <div className="flex-1 min-w-0">
                             <h4 className="font-semibold text-sm truncate">{track.title}</h4>
@@ -229,8 +229,8 @@ const Marketplace = () => {
                     </Card>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex items-center gap-4 flex-wrap">
                         <Button
                           variant="ghost"
                           size="sm"
@@ -248,7 +248,7 @@ const Marketplace = () => {
                           <span className="text-xs">{track.shares}</span>
                         </Button>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
                         <Button
                           size="sm"
                           className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1.5"
@@ -270,7 +270,7 @@ const Marketplace = () => {
 
           {/* Right Side Content */}
           <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
+            <div className="lg:sticky lg:top-8 space-y-6">
               {/* Featured Artist */}
               <Card className="border-border/50 bg-background/80 backdrop-blur-sm">
                 <CardContent className="p-4">

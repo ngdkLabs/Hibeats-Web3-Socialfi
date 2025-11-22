@@ -19,7 +19,7 @@ const SettingsSkeleton = () => {
 
       {/* Main Content */}
       <main className="pt-16">
-        <div className="container mx-auto px-6 py-6">
+        <div className="page-shell py-6">
           {/* Header */}
           <div className="mb-8">
             <Skeleton className="h-10 w-48 mb-2" />

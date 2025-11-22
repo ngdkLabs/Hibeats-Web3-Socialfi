@@ -192,10 +192,9 @@ const ArtistProfile = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-
-      {/* Back Button */}
-      <div className="pt-16 pb-4">
-        <div className="container mx-auto px-6">
+      <main className="page-main">
+        {/* Back Button */}
+        <div className="page-shell pb-4">
           <Button variant="ghost" size="sm" asChild className="gap-2">
             <Link to="/feed">
               <ChevronLeft className="w-4 h-4" />
@@ -203,41 +202,40 @@ const ArtistProfile = () => {
             </Link>
           </Button>
         </div>
-      </div>
 
-      {/* Profile Header */}
-      <div className="relative border-b border-border/20 overflow-hidden min-h-[400px]">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${bgprofile})` }}
-        ></div>
+        {/* Profile Header */}
+        <div className="relative border-b border-border/20 overflow-hidden min-h-[400px]">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${bgprofile})` }}
+          ></div>
 
-        {/* Background Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background/80 to-secondary/5 backdrop-blur-sm"></div>
+          {/* Background Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background/80 to-secondary/5 backdrop-blur-sm"></div>
 
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 to-transparent"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-secondary/10 to-transparent rounded-full blur-3xl"></div>
-        </div>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 to-transparent"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+          </div>
 
-        <div className="relative container mx-auto px-6 py-8 min-h-[400px] flex items-center">
-          <div className="flex flex-col md:flex-row gap-8 items-start w-full">
-            {/* Avatar */}
-            <div className="relative">
-              <Avatar className="w-32 h-32 md:w-40 md:h-40 ring-4 ring-background/50 shadow-2xl">
-                <AvatarImage src={artistAvatar} />
-                <AvatarFallback className="bg-primary/10 text-primary font-semibold text-4xl md:text-5xl">
-                  {artist.avatar}
-                </AvatarFallback>
-              </Avatar>
-            </div>
+          <div className="relative page-shell py-8 min-h-[400px] flex items-center">
+            <div className="flex flex-col md:flex-row gap-8 items-start w-full">
+              {/* Avatar */}
+              <div className="relative">
+                <Avatar className="w-32 h-32 md:w-40 md:h-40 ring-4 ring-background/50 shadow-2xl">
+                  <AvatarImage src={artistAvatar} />
+                  <AvatarFallback className="bg-primary/10 text-primary font-semibold text-4xl md:text-5xl">
+                    {artist.avatar}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
 
-            {/* Profile Info */}
-            <div className="flex-1 space-y-4">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
+              {/* Profile Info */}
+              <div className="flex-1 space-y-4">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
                   <h1 className="font-clash font-semibold text-3xl md:text-4xl text-foreground">{artist.name}</h1>
                   {artist.isVerified && <VerifiedBadge size="lg" />}
                 </div>
@@ -303,7 +301,7 @@ const ArtistProfile = () => {
       </div>
 
       {/* Content Section with Tabs */}
-      <div className="container mx-auto px-6 py-8">
+      <div className="page-shell py-8">
         <Tabs value={activeTab} onValueChange={(value: any) => setActiveTab(value)} className="w-full">
           <TabsList className="w-full justify-start rounded-none border-b border-border bg-transparent h-auto p-0">
             <TabsTrigger
@@ -380,7 +378,7 @@ const ArtistProfile = () => {
 
               {/* Conditional Grid Content */}
               {musicTab === 'releases' ? (
-              <div className="grid grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {artistTracks.map((track, index) => (
                   <Card key={track.id} className="group hover:shadow-xl transition-all duration-300 border-border/50 overflow-hidden hover:scale-[1.02]">
                     <div className="relative">
@@ -450,7 +448,7 @@ const ArtistProfile = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {artistCollections.map((collection, index) => (
                   <Card key={collection.id} className="group hover:shadow-xl transition-all duration-300 border-border/50 overflow-hidden hover:scale-[1.02]">
                     <div className="relative">
@@ -542,6 +540,7 @@ const ArtistProfile = () => {
           </TabsContent>
         </Tabs>
       </div>
+    </main>
     </div>
   );
 };
