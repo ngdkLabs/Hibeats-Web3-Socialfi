@@ -10,6 +10,7 @@ import {
   Video,
   Smile,
   AtSign,
+  Hash,
   Music,
   X,
   Upload,
@@ -988,6 +989,20 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
               </div>
             )}
 
+            {/* Helper text for mentions and hashtags */}
+            {content.length === 0 && !showMentionSuggestions && (
+              <div className="mt-2 text-xs text-muted-foreground flex items-center gap-4">
+                <span className="flex items-center gap-1">
+                  <AtSign className="w-3 h-3" />
+                  <span>@username to mention</span>
+                </span>
+                <span className="flex items-center gap-1">
+                  <Hash className="w-3 h-3" />
+                  <span>#hashtag to tag</span>
+                </span>
+              </div>
+            )}
+
             {/* Attachments Preview */}
             {attachments.length > 0 && (
               <div className="mt-3 space-y-2">
@@ -1411,8 +1426,8 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
               </div>
             )}
 
-            <div className="flex flex-col gap-3 mt-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-wrap gap-2">
+            <div className="flex items-center justify-between mt-3">
+              <div className="flex gap-2">
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -1490,6 +1505,23 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    console.log('# Hashtag button clicked');
+                    handleHashtag();
+                  }}
+                  title="Add hashtag (#)"
+                >
+                  <Hash className="w-4 h-4" />
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-primary disabled:opacity-50"
+                  disabled={isPosting}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     console.log('🎵 Music button clicked');
                     setIsRecording(!isRecording);
                   }}
@@ -1499,7 +1531,7 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                 </Button>
               </div>
 
-              <div className="flex items-center gap-2 sm:justify-end sm:flex-1 sm:flex-row">
+              <div className="flex items-center gap-2">
                 {uploadProgress && (
                   <span className="text-xs text-muted-foreground">
                     {uploadProgress}
@@ -1525,14 +1557,14 @@ const PostComposer = ({ onPost, placeholder = "What's happening in music?", clas
                     handleSubmit();
                   }}
                   disabled={
-                    !canPost ||
-                    content.length > 280 ||
-                    !isAccountReady ||
-                    isPosting ||
+                    !canPost || 
+                    content.length > 280 || 
+                    !isAccountReady || 
+                    isPosting || 
                     attachments.some(att => att.uploading) ||
                     attachments.some(att => att.uploadFailed)
                   }
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 disabled:opacity-50 disabled:cursor-not-allowed"
                   title={
                     attachments.some(att => att.uploading)
                       ? 'Waiting for uploads to complete...'
