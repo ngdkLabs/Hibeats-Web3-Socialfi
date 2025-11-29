@@ -135,15 +135,6 @@ Real-time data synchronization using Somnia's native Data Streams:
 
 HiBeats leverages Somnia Data Streams as the core infrastructure for all real-time social features, achieving Web2-level performance (15-100ns read/write latency) while maintaining Web3 decentralization guarantees. SDS replaces traditional smart contracts for high-frequency operations where gas costs and transaction latency would create poor user experience.
 
-### Why SDS Over Smart Contracts?
-
-| Feature | Smart Contracts | Somnia Data Streams |
-|---------|----------------|---------------------|
-| **Write Latency** | 400-1000ms | 15-100ns |
-| **Read Latency** | RPC call (~100ms) | 15-100ns (IceDB) |
-| **Gas Costs** | Per transaction | Zero (native protocol) |
-| **Throughput** | Limited by block gas | 400,000+ TPS |
-| **Use Case** | Asset ownership, transfers | Social interactions, real-time data |
 
 ### SDS Implementation Architecture
 
