@@ -897,7 +897,6 @@ npm run test:playlist # Test playlist features
 
 - 🌐 Website: [https://www.hibeats.xyz/](https://www.hibeats.xyz/)
 - 🏢 Organization: [https://github.com/ngdkLabs/Hibeats-Web3-Socialfi/](https://github.com/ngdkLabs/Hibeats-Web3-Socialfi/)
-- 📑 Documentation: [Comprehensive Documentation]()
 - 🎥 Demo Video: [Platform Walkthrough](https://drive.google.com/drive/folders/1GRXqQw2aVn-GUDIRMctkXrcnAAhMlRvB)
 
 ---
