@@ -142,7 +142,7 @@ HiBeats leverages Somnia Data Streams as the core infrastructure for all real-ti
 | **Write Latency** | 400-1000ms | 15-100ns |
 | **Read Latency** | RPC call (~100ms) | 15-100ns (IceDB) |
 | **Gas Costs** | Per transaction | Zero (native protocol) |
-| **Throughput** | Limited by block gas | 400,000+ TPS |
+| **Throughput** | Limited by block gas | 1,000,000+ TPS |
 | **Use Case** | Asset ownership, transfers | Social interactions, real-time data |
 
 ### SDS Implementation Architecture
