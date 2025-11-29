@@ -8,7 +8,8 @@
 ## Project Demo
 [Go to site](https://www.hibeats.xyz/)
 
-<img width="1918" height="921" alt="Screenshot 2025-09-27 165912" src="https://github.com/user-attachments/assets/ba7f5ada-f2fb-4059-943a-277e4d6870a7" />
+<img width="1902" height="875" alt="Screenshot 2025-11-29 215745" src="https://github.com/user-attachments/assets/974cfdc0-7221-42ab-a188-75509a4045be" />
+
 
 ---
 
