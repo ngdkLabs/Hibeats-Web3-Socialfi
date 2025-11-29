@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "somnia-docs": {
+      "url": "https://docs.somnia.network/~gitbook/mcp",
+      "disabled": false,
+      "autoApprove": [
+        "searchDocumentation",
+        "searchDocumentation",
+        "searchDocumentation"
+      ]
+    },
+    "TestSprite": {
+      "command": "npx",
+      "args": ["@testsprite/testsprite-mcp@latest"],
+      "env": {
+        "API_KEY": "sk-user-zuF5uQ7PoqzgnHZ8da1Np1Xpoh4hRiz4MnIkst1RRnTD3EdtO8-Ncxeq7m9KI00Bu5q8iPFOWSjJnLHi6a2Oaw_iBfBbELTeOmFO8dMMYOxSrsjNUNoCIs5VnHjYueIiM3k"
+      }
+    }
+  }
+}

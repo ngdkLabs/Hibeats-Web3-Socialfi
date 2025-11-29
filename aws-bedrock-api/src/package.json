@@ -1,0 +1,8 @@
+{
+  "name": "yourvibe-bedrock-api",
+  "version": "1.0.0",
+  "description": "AWS Bedrock API for YourVibe AI features",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.450.0"
+  }
+}

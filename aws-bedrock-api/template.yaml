@@ -1,0 +1,85 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: YourVibe Bedrock AI API
+
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: nodejs18.x
+    MemorySize: 256
+    Environment:
+      Variables:
+        BEDROCK_MODEL_ID: anthropic.claude-3-haiku-20240307-v1:0
+        AWS_REGION_BEDROCK: us-east-1
+
+Resources:
+  # API Gateway
+  BedrockApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowMethods: "'POST, OPTIONS'"
+        AllowHeaders: "'Content-Type, x-api-key'"
+        AllowOrigin: "'*'"
+      Auth:
+        ApiKeyRequired: true
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          UsagePlanName: YourVibeBedrockPlan
+          Throttle:
+            BurstLimit: 100
+            RateLimit: 50
+          Quota:
+            Limit: 10000
+            Period: MONTH
+
+  # Analyze Function
+  AnalyzeFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: analyze.handler
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: '*'
+      Events:
+        Analyze:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BedrockApi
+            Path: /analyze
+            Method: post
+
+  # Chat Function
+  ChatFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: chat.handler
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: '*'
+      Events:
+        Chat:
+          Type: Api
+          Properties:
+            RestApiId: !Ref BedrockApi
+            Path: /chat
+            Method: post
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${BedrockApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+  ApiKeyId:
+    Description: API Key ID (get value from AWS Console)
+    Value: !Ref BedrockApiApiKey
