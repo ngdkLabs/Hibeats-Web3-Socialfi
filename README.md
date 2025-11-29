@@ -1,520 +1,907 @@
-# 🎵 HiBeats - Web3 Music Social Platform
+# HiBeats - AI-Powered Music NFT Platform
 
-HiBeats adalah platform sosial musik berbasis Web3 yang dibangun di atas Somnia Network. Platform ini memungkinkan artis untuk membuat, berbagi, dan memonetisasi musik mereka melalui NFT, sambil berinteraksi dengan fans dalam ekosistem sosial yang terdesentralisasi.
+![Built on Somnia](https://img.shields.io/badge/Built%20on-Somnia-blueviolet?style=for-the-badge&logo=ethereum)
+![AI Powered](https://img.shields.io/badge/AI-Powered-lightblue?style=for-the-badge&logo=openai)
+![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
 
-## ✨ Fitur Utama
+## Project Demo
+[Go to site](https://www.hibeats.xyz/)
 
-- 🎼 **Music NFT Marketplace** - Mint, jual, dan beli musik sebagai NFT
-- 🎨 **Album & Playlist Management** - Kelola koleksi musik Anda
-- 💬 **Social Features** - Post, like, comment, dan share konten musik
-- 🎵 **AI Music Generation** - Generate musik dengan AI (Suno integration)
-- 💰 **Tipping System** - Dukung artis favorit Anda
-- 🏆 **BXP Rewards & Quests** - Sistem reward dan quest untuk engagement
-- 👛 **Sequence Wallet Integration** - Wallet management yang mudah
-- 🔐 **Session Keys** - Transaksi gasless dengan session management
-- 📊 **Real-time Analytics** - Dashboard analytics real-time
-- 🌊 **Somnia DataStream** - Real-time blockchain data streaming
+<img width="1918" height="921" alt="Screenshot 2025-09-27 165912" src="https://github.com/user-attachments/assets/ba7f5ada-f2fb-4059-943a-277e4d6870a7" />
 
-### 🚀 Advanced Real-Time Features (NEW!)
+---
 
-- ⚡ **WebSocket Subscriptions** - True real-time updates (<100ms latency)
-- 🔔 **Instant Notifications** - No polling, instant push notifications
-- 👁️ **Live View Counters** - See how many users are viewing posts in real-time
-- ⌨️ **Live Typing Indicators** - See who's typing comments in real-time
-- 🏆 **Real-Time Leaderboard** - Live rankings with smooth animations
-- 📊 **Performance Monitoring** - Real-time performance metrics dashboard
-- 🎯 **Event Filtering** - Efficient data streaming with indexed topics
-- 📈 **Incremental Loading** - 50x faster data loading with smart caching
+# Overview
 
-## 🛠️ Tech Stack
+## Introduction to HiBeats
 
-### Frontend
-- **React 18** + **TypeScript**
-- **Vite** - Build tool
-- **TailwindCSS** + **Shadcn/ui** - Styling
-- **Wagmi** + **Viem** - Ethereum interactions
-- **0xSequence** - Wallet & session management
-- **Apollo Client** - GraphQL client
-- **React Router** - Routing
-- **Recharts** - Data visualization
+HiBeats is a next-generation SocialFi platform that converges AI-powered music generation, NFT marketplace infrastructure, and decentralized social networking into a unified Web3 ecosystem. Built on Somnia's high-performance blockchain, HiBeats empowers creators to generate, monetize, and distribute music through a permissionless, community-driven economy.
 
-### Smart Contracts
-- **Hardhat** - Development environment
-- **Solidity** - Smart contract language
-- **OpenZeppelin** - Contract libraries
-- **ERC-721** - NFT standard
-- **Account Abstraction (ERC-4337)** - Gasless transactions
+The platform addresses critical inefficiencies in the traditional music industry: centralized gatekeeping, opaque revenue distribution, and limited creator ownership. By integrating advanced AI music generation with blockchain-native primitives, HiBeats enables anyone to produce professional-grade compositions from text prompts and instantly tokenize them as tradeable NFTs—eliminating intermediaries and ensuring transparent, programmable royalties.
 
-### Blockchain & Indexing
-- **Somnia Network** - Layer 1 blockchain
-- **The Graph** - Subgraph indexing
-- **Somnia DataStream** - Real-time data streaming
-- **IPFS** - Decentralized storage
+HiBeats leverages Somnia's sub-second finality and Data Streams technology to deliver Web2-level user experience with Web3 ownership guarantees. The architecture combines on-chain smart contracts for asset management and marketplace operations with real-time data synchronization for social features, creating a seamless environment where creators can build audiences, engage communities, and capture value directly from their work.
 
-## 📋 Prerequisites
+At its core, HiBeats is designed for composability and interoperability, providing open APIs, standardized NFT metadata, and cross-platform compatibility that position it as infrastructure for the future of decentralized music creation and distribution.
 
-Pastikan Anda telah menginstall:
+## What Is HiBeats?
 
-- **Node.js** >= 18.x
-- **npm** atau **yarn** atau **bun**
-- **Git**
-- **MetaMask** atau wallet lainnya (untuk testing)
+HiBeats is a decentralized SocialFi protocol for AI-generated music, combining generative AI infrastructure, NFT marketplace mechanics, and social graph primitives to create a permissionless music economy. The platform enables creators to generate professional music compositions through natural language prompts, tokenize them as ERC-721 NFTs, and distribute them through an open marketplace with programmable royalties and community-driven discovery.
 
-## 🎯 Somnia Data Streams Hackathon
+The protocol architecture consists of three core layers:
 
-HiBeats showcases **advanced Somnia Data Streams (SDS)** features:
+**Generation Layer**: Multi-model AI engine (V3.5, V4, V4.5) supporting custom lyrics, instrumental modes, and style parameters, with generation times optimized between 30-180 seconds depending on quality requirements.
 
-- ✅ **True Real-Time Updates** - WebSocket subscriptions, not polling
-- ✅ **50x Performance Improvement** - Sub-100ms latency vs 3-5 second delays
-- ✅ **Advanced Features** - Event filtering, computed queries, incremental loading
-- ✅ **Live Social Features** - View counters, typing indicators, real-time leaderboards
-- ✅ **Production Ready** - Error handling, auto-reconnect, performance monitoring
+**Asset Layer**: Smart contract infrastructure on Somnia blockchain managing NFT minting, ownership transfers, marketplace listings, and automated royalty distribution with sub-second transaction finality.
 
-**📚 Documentation:**
-- [Somnia Data Streams Showcase](./SOMNIA_DATASTREAMS_SHOWCASE.md) - Technical details
-- [Real-Time Features Guide](./REALTIME_FEATURES_GUIDE.md) - Quick start guide
-- [Implementation Summary](./IMPLEMENTATION_SUMMARY.md) - What was built
-- [Demo Video Script](./DEMO_VIDEO_SCRIPT.md) - Recording guide
+**Social Layer**: Real-time data synchronization via Somnia Data Streams enabling social posts, interactions, encrypted messaging, playlist management, and the BeatsXP (BXP) gamification system—all with Web2-level latency (15-100ns read/write).
 
-**🧪 Testing:**
-```bash
-# Test all real-time features
-npm run test:realtime:all
+HiBeats operates as a fully decentralized protocol where users maintain custody of their assets, control their data, and participate in an open economy without platform lock-in or centralized intermediaries.
 
-# Test specific features
-npm run test:realtime 3  # Incremental loading
-npm run test:realtime 4  # Live indicators
-npm run test:realtime 7  # Performance metrics
+### Key Technologies
+
+- **Somnia Blockchain**: High-performance EVM-compatible blockchain with sub-second finality
+- **Somnia Data Streams**: Real-time data synchronization for social features and interactions
+- **Sequence Wallet**: Seamless Web3 wallet integration with gasless transaction support
+- **AI Music Engine**: Advanced AI music generation with multiple model versions
+- **IPFS**: Decentralized storage for music files and metadata
+
+## Key Features
+
+### AI-Powered Music Generation
+
+HiBeats facilitates professional music creation using advanced AI technology without the need for traditional music production skills or expensive equipment. Users can input creative prompts and generate unique compositions across multiple genres using:
+
+- **V3.5**: Balanced quality and speed (30-90 seconds generation time)
+- **V4**: Enhanced features and better quality (45-120 seconds)
+- **V4.5**: Latest model with best quality (60-180 seconds)
+
+Features include custom lyrics support, instrumental mode, style customization, and vocal gender selection.
+
+### Seamless NFT Minting and Marketplace Trading
+
+HiBeats leverages blockchain technology to securely transform generated music into tradeable NFTs using smart contracts that ensure ownership authenticity, royalty distribution, and marketplace transparency through automated protocols.
+
+### Real-Time Social Features with Somnia Data Streams
+
+The platform integrates Somnia Data Streams for real-time social interactions including:
+
+- **Social Posts**: Create, like, comment, and repost content
+- **Live Indicators**: Real-time typing indicators and online status
+- **Notifications**: Instant notifications for mentions, tips, and interactions
+- **Encrypted Messaging**: Secure direct messaging between users
+
+### BeatsXP (BXP) Reward System
+
+A comprehensive gamification system that rewards user engagement:
+
+- XP rewards for music generation, listening, and social interactions
+- Daily and weekly XP caps to ensure fair distribution
+- Streak bonuses for consecutive daily activity
+- Leaderboards and achievements
+- Level progression system
+
+### Playlist Management
+
+Full-featured playlist system with:
+
+- Create, edit, and delete playlists
+- Add/remove tracks with optimistic updates
+- Collaborative playlists with multiple editors
+- Social features (follow, like, play counts)
+- Multi-publisher support for decentralized data
+
+### Tipping System
+
+Support creators directly with STT tokens:
+
+- Tip posts, tracks, albums, or artists
+- Real-time balance updates
+- Tip statistics and leaderboards
+- Background notification processing
+
+---
+
+# Technical Architecture
+
+## Smart Contract Ecosystem
+
+HiBeats deploys a comprehensive smart contract ecosystem on Somnia Testnet (Chain ID: 50312):
+
+### Deployed Contracts
+
+| Contract | Address | Function |
+|----------|---------|----------|
+| **UserProfile** | `0x6aD6eBc95116A81CB89FCB2676E829b5dabF7536` | Creator profile and social features |
+| **SongNFT** | `0xc9Ab73b5f988826943e4f63E89ed0841757CBD6c` | Music NFT minting and ownership |
+| **AlbumManager** | `0x94892b8E7CC63E0C5E5eE7ce27D4E7588CbAf864` | Album creation and management |
+| **Marketplace** | `0xe62Dc8113C77bDA6b13Eebb86f3453C4df5399e2` | NFT trading and price discovery |
+| **TippingSystem** | `0xD6CAA4722083afFdBE54949E39C46C164ad1a370` | Creator tipping functionality |
+
+**Note:** Playlists, social posts, messaging, and BXP rewards are managed via Somnia Data Streams (not smart contracts) for real-time performance.
+
+### Somnia Data Streams Integration
+
+Real-time data synchronization using Somnia's native Data Streams:
+
+- **Datastream Contract**: ``
+- **WebSocket Support**: `wss://dream-rpc.somnia.network/ws`
+- **Polling Interval**: 100ms for sub-second finality
+
+---
+
+## How Somnia Data Streams (SDS) Was Used
+
+HiBeats leverages Somnia Data Streams as the core infrastructure for all real-time social features, achieving Web2-level performance (15-100ns read/write latency) while maintaining Web3 decentralization guarantees. SDS replaces traditional smart contracts for high-frequency operations where gas costs and transaction latency would create poor user experience.
+
+### Why SDS Over Smart Contracts?
+
+| Feature | Smart Contracts | Somnia Data Streams |
+|---------|----------------|---------------------|
+| **Write Latency** | 400-1000ms | 15-100ns |
+| **Read Latency** | RPC call (~100ms) | 15-100ns (IceDB) |
+| **Gas Costs** | Per transaction | Zero (native protocol) |
+| **Throughput** | Limited by block gas | 400,000+ TPS |
+| **Use Case** | Asset ownership, transfers | Social interactions, real-time data |
+
+### SDS Implementation Architecture
+
+```typescript
+// Core SDS Service Integration
+import { SomniaDatastreamService } from '@/services/somniaDatastreamService';
+
+const datastreamService = new SomniaDatastreamService({
+  rpcUrl: 'https://dream-rpc.somnia.network',
+  wsUrl: 'wss://dream-rpc.somnia.network/ws',
+  pollingInterval: 100, // Sub-second finality
+  enableMultiPublisher: true // Decentralized data redundancy
+});
+```
+
+### Real-World SDS Use Cases in HiBeats
+
+#### 1. Social Posts & Interactions (V6 Schema)
+
+**Problem Solved**: Traditional social media requires centralized databases. On-chain storage via smart contracts is too expensive and slow for high-frequency interactions.
+
+**SDS Solution**: Posts, likes, comments, and reposts are written to `hibeats_posts_v6` and `hibeats_
+
+## Somnia Data Streams Schema Implementation
+
+HiBeats implements a comprehensive V6 schema system optimized for Web2-level performance on Web3, leveraging Somnia's IceDB with 15-100ns read/write latency.
+
+### Core Schemas (V6 - Production Ready)
+
+#### 1. Posts Schema (`hibeats_posts_v6`)
+
+Full SocialFi features with monetization support:
+
+```solidity
+uint256 id,              // Timestamp-based unique ID
+uint256 timestamp,       // Unix timestamp
+string content,          // Post text content
+uint8 contentType,       // 0=TEXT, 1=IMAGE, 2=VIDEO, 3=MUSIC, 4=QUOTE
+string mediaHashes,      // Comma-separated IPFS hashes
+address author,          // User address
+uint256 quotedPostId,    // Referenced post ID (0 if not quote)
+uint256 replyToId,       // Reply to post ID (threading support)
+string mentions,         // Comma-separated mentioned addresses
+address collectModule,   // Smart contract for collect logic
+uint256 collectPrice,    // Price in wei to collect
+uint32 collectLimit
+,     // Max collects (0 = unlimited)
+uint32 collectCount,     // Current collect count
+bool isGated,            // Content locked behind payment
+address referrer,        // Referral address for revenue sharing
+uint32 nftTokenId,       // NFT token ID (0 if not NFT)
+bool isDeleted,          // Soft delete flag
+bool isPinned            // Pinned to profile
+```
+
+#### 2. Interactions Schema (`hibeats_interactions_v6`)
+
+Enhanced with tipping and comprehensive interaction types:
+
+```solidity
+uint256 id,              // Deterministic ID for deduplication
+uint256 timestamp,       // Unix timestamp
+uint8 interactionType,   // Enum: LIKE, UNLIKE, COMMENT, REPOST, etc.
+uint256 targetId,        // Target post/comment ID
+uint8 targetType,        // 0=POST, 1=COMMENT, 2=USER, 3=ALBUM, 4=SONG, 5=PLAYLIST
+address fromUser,        // User address
+string content,          // Comment text (empty for likes)
+uint256 parentId,        // Parent comment ID (0 for top-level)
+uint256 tipAmount        // Tip amount in wei
+```
+
+**Interaction Types:**
+| Type | Value | Description |
+|------|-------|-------------|
+| LIKE | 0 | Like a post/song |
+| UNLIKE | 1 | Remove like |
+| COMMENT | 2 | Add comment |
+| REPOST | 3 | Repost content |
+| UNREPOST | 4 | Remove repost |
+| DELETE | 5 | Delete content |
+| BOOKMARK | 6 | Save to bookmarks |
+| UNBOOKMARK | 7 | Remove bookmark |
+| TIP | 8 | Tip creator |
+| COLLECT | 9 | Collect/mint as NFT |
+| FOLLOW | 11 | Follow user |
+| UNFOLLOW | 12 | Unfollow user |
+
+#### 3. Profiles Schema (`hibeats_profiles_v6`)
+
+Cached user profiles for fast lookups:
+
+```solidity
+address userAddress,     // Primary key
+string username,         // Unique username
+string displayName,      // Display name
+string bio,              // User bio
+string avatarHash,       // IPFS hash for avatar
+uint32 followerCount,    // Cached follower count
+uint32 followingCount,   // Cached following count
+bool isVerified,         // Verified badge
+bool isArtist            // Artist badge
+```
+
+#### 4. Generated Music Schema (`hibeats_generated_music_v1`)
+
+Backup for failed mint recovery:
+
+```solidity
+uint256 id,              // Timestamp-based ID
+uint256 timestamp,       // Unix timestamp
+address owner,           // User who generated
+string taskId,           // AI task ID
+string title,            // Song title
+string audioUrl,         // IPFS/direct URL to audio
+string imageUrl,         // IPFS/direct URL to cover
+string prompt,           // Generation prompt
+string style,            // Music style/genre
+string lyrics,           // Song lyrics
+uint8 status             // 0=PENDING, 1=COMPLETED, 2=MINTED, 3=FAILED
+```
+
+#### 5. Play Events Schema (`hibeats_play_events_v1`)
+
+For play count tracking and trending algorithm:
+
+```solidity
+uint256 id,              // Unique event ID
+uint256 timestamp,       // Unix timestamp
+uint32 tokenId,          // NFT token ID
+address listener,        // User who played
+uint32 duration,         // Play duration in seconds
+string source            // Source: feed, collection, album, etc.
+```
+
+#### 6. Activity History Schema (`hibeats_activity_history_v1`)
+
+Wallet activity tracking:
+
+```solidity
+uint256 id,              // Unique ID
+uint256 timestamp,       // Unix timestamp
+address user,            // User address
+uint8 activityType,      // MINT, TRANSFER, SALE, PURCHASE, etc.
+string title,            // Activity title
+string description,      // Activity description
+uint256 targetId,        // Target ID (tokenId, postId, etc.)
+address targetAddress,   // Target address
+string txHash,           // Transaction hash
+string metadata          // JSON metadata
+```
+
+#### 7. Playlist Schema (Somnia Data Streams)
+
+**Note:** Playlists are managed via Somnia Data Streams SDK, not smart contracts.
+
+```solidity
+uint64 timestamp,        // Unix timestamp
+uint256 playlistId,      // Unique playlist ID
+address owner,           // Playlist owner
+string title,            // Playlist title
+string description,      // Playlist description
+string coverHash,        // IPFS hash for cover image
+string trackIds,         // Comma-separated track IDs
+bool isPublic,           // Public/private visibility
+bool isDeleted           // Soft delete flag
+```
+
+**Features:**
+- Multi-publisher support for decentralized data
+- Optimistic updates for instant UI feedback
+- Collaborative playlists with multiple editors
+- Social features (follow, like, play counts)
+
+#### 8. Messaging Schemas V2 (Somnia Data Streams)
+
+**Direct Messages:**
+```solidity
+bytes32 messageId,       // Unique message ID
+uint64 timestamp,        // Unix timestamp
+bytes32 conversationId,  // Conversation ID
+string content,          // Message content
+address sender,          // Sender address
+address recipient,       // Recipient address
+uint8 messageType,       // TEXT, IMAGE, VIDEO, etc.
+string mediaUrl,         // Media URL (if any)
+bytes32 replyToMessageId, // Reply reference
+bool isRead,             // Read status
+bool isDeleted,          // Deleted flag
+bool isEdited,           // Edited flag
+uint64 editedAt          // Edit timestamp
+```
+
+**Conversations:**
+```solidity
+bytes32 conversationId,  // Unique conversation ID
+address participant1,    // First participant
+address participant2,    // Second participant
+uint64 lastMessageTime,  // Last message timestamp
+uint64 createdAt,        // Creation timestamp
+bool isArchived,         // Archive status
+bool isMuted,            // Mute status
+bool isPinned,           // Pin status
+uint32 unreadCount       // Unread message count
+```
+
+**Typing Indicators:**
+```solidity
+bytes32 conversationId,  // Conversation ID
+address user,            // User address
+bool isTyping,           // Typing status
+uint64 timestamp         // Timestamp
+```
+
+**User Presence:**
+```solidity
+address user,            // User address
+uint8 status,            // OFFLINE, ONLINE, AWAY, BUSY
+uint64 lastSeen,         // Last seen timestamp
+string statusMessage,    // Custom status message
+bool isOnline            // Online flag
+```
+
+**Message Types Supported:**
+- TEXT (0), IMAGE (1), VIDEO (2), AUDIO (3), FILE (4)
+- LINK (5), GIF (6), STICKER (7), LOCATION (8)
+- CONTACT (9), POLL (10), NFT (11), TOKEN_TRANSFER (12)
+- VOICE_NOTE (13), STORY_REPLY (14), MUSIC_TRACK (15)
+
+### BeatsXP (BXP) Schemas
+
+#### BXP Transactions (`hibeats_bxp_transactions_v1`)
+
+```typescript
+{
+  id: string,            // Unique transaction ID
+  userAddress: string,   // User wallet address
+  amount: number,        // XP amount (after multipliers)
+  baseAmount: number,    // Base XP before multipliers
+  type: string,          // Reward type
+  multiplier: number,    // Total multiplier applied
+  timestamp: number,     // Unix timestamp
+  metadata: string,      // JSON additional data
+  dailyTotal: number,    // Running daily total
+  weeklyTotal: number    // Running weekly total
+}
+```
+
+#### BXP Profiles (`hibeats_bxp_profiles_v1`)
+
+```typescript
+{
+  userAddress: string,   // Primary key
+  totalXP: number,       // Total lifetime XP
+  level: number,         // Current level
+  dailyXP: number,       // XP earned today
+  weeklyXP: number,      // XP earned this week
+  monthlyXP: number,     // XP earned this month
+  streak: number,        // Current daily streak
+  longestStreak: number, // Longest streak achieved
+  lastActivityDate: string, // YYYY-MM-DD
+  multipliers: string,   // JSON array of active multipliers
+  achievements: string,  // JSON array of achievement IDs
+  rank: number,          // Global rank
+  updatedAt: number      // Last update timestamp
+}
+```
+
+#### BXP Quests (`hibeats_bxp_quests_v1`)
+
+```typescript
+{
+  id: string,            // Quest ID
+  userAddress: string,   // User wallet address
+  questType: string,     // daily, weekly, monthly
+  questName: string,     // Quest name
+  description: string,   // Quest description
+  targetValue: number,   // Target to complete
+  currentValue: number,  // Current progress
+  reward: number,        // XP reward
+  completed: boolean,    // Completion status
+  claimedAt: number,     // Claim timestamp
+  expiresAt: number,     // Expiration timestamp
+  createdAt: number      // Creation timestamp
+}
+```
+
+#### BXP Leaderboard (`hibeats_bxp_leaderboard_v1`)
+
+```typescript
+{
+  userAddress: string,   // User wallet address
+  totalXP: number,       // Total XP for ranking
+  level: number,         // Current level
+  rank: number,          // Current rank
+  previousRank: number,  // Previous rank
+  period: string,        // all_time, monthly, weekly
+  updatedAt: number      // Last update timestamp
+}
+```
+
+
+
+## Subgraph Implementation
+
+HiBeats uses The Graph protocol for indexing on-chain NFT and trading data, while social features are handled by Somnia Data Streams.
+
+### Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    HiBeats Data Layer                       │
+├─────────────────────────────┬───────────────────────────────┤
+│   Somnia Data Streams       │         Subgraph              │
+│   (Real-time Social)        │    (NFT & Trading)            │
+├─────────────────────────────┼───────────────────────────────┤
+│ • Posts & Comments          │ • Song NFT Metadata           │
+│ • Likes & Reposts           │ • Album Management            │
+│ • Follows & Bookmarks       │ • Marketplace Listings        │
+│ • Play Events               │ • Sales & Transfers           │
+│ • BXP Rewards               │ • On-chain Tips               │
+│ • Live Indicators           │ • Price History               │
+│ • Notifications             │ • Trading Analytics           │
+└─────────────────────────────┴───────────────────────────────┘
+```
+
+### Subgraph Entities
+
+#### User Profile Entity
+
+```graphql
+type UserProfile @entity {
+  id: ID!                          # User address
+  beatsId: BigInt!                 # Unique numeric identifier
+  username: String!
+  displayName: String!
+  bio: String
+  avatarHash: String
+  bannerHash: String
+  isVerified: Boolean!
+  isArtist: Boolean!
+  reputationScore: BigInt!
+  createdAt: BigInt!
+  updatedAt: BigInt!
+  
+  # Relations
+  songs: [Song!]! @derivedFrom(field: "artist")
+  ownedSongs: [Song!]! @derivedFrom(field: "owner")
+  albums: [Album!]! @derivedFrom(field: "artist")
+  songsSold: [SongSale!]! @derivedFrom(field: "seller")
+  songsBought: [SongSale!]! @derivedFrom(field: "buyer")
+  tipsGiven: [Tip!]! @derivedFrom(field: "tipper")
+  tipsReceived: [Tip!]! @derivedFrom(field: "recipient")
+}
+```
+
+#### Song NFT Entity
+
+```graphql
+type Song @entity {
+  id: ID!                          # Token ID
+  tokenId: BigInt!
+  artist: UserProfile!
+  owner: UserProfile!
+  title: String!
+  description: String
+  genre: String
+  audioHash: String!               # IPFS hash
+  coverHash: String
+  duration: BigInt!
+  price: BigInt!
+  royaltyPercentage: BigInt!
+  transferCount: BigInt!
+  isListed: Boolean!
+  createdAt: BigInt!
+  
+  # Relations
+  transfers: [SongTransfer!]! @derivedFrom(field: "song")
+  sales: [SongSale!]! @derivedFrom(field: "song")
+  listings: [SongListing!]! @derivedFrom(field: "song")
+  tips: [Tip!]! @derivedFrom(field: "song")
+  dailyStats: [SongDailyStats!]! @derivedFrom(field: "song")
+}
+```
+
+#### Album Entity
+
+```graphql
+type Album @entity {
+  id: ID!
+  albumId: BigInt!
+  artist: UserProfile!
+  title: String!
+  description: String
+  coverImageHash: String
+  albumType: AlbumType!            # SINGLE, EP, ALBUM
+  songCount: BigInt!
+  createdAt: BigInt!
+  releaseDate: BigInt
+  isPublished: Boolean!
+  songs: [AlbumSong!]! @derivedFrom(field: "album")
+}
+```
+
+#### Marketplace Entities
+
+```graphql
+type SongListing @entity {
+  id: ID!
+  song: Song!
+  seller: UserProfile!
+  price: BigInt!
+  isActive: Boolean!
+  listedAt: BigInt!
+  expiresAt: BigInt
+  soldAt: BigInt
+  buyer: UserProfile
+}
+
+type SongSale @entity(immutable: true) {
+  id: ID!
+  song: Song!
+  seller: UserProfile!
+  buyer: UserProfile!
+  price: BigInt!
+  royaltyPaid: BigInt!
+  platformFee: BigInt!
+  sellerProceeds: BigInt!
+  timestamp: BigInt!
+}
+```
+
+#### Analytics Entities
+
+```graphql
+type UserNFTStats @entity {
+  id: ID!
+  user: UserProfile!
+  songsOwned: BigInt!
+  songsCreated: BigInt!
+  albumsCreated: BigInt!
+  songsSold: BigInt!
+  songsBought: BigInt!
+  totalSalesVolume: BigInt!
+  totalRoyaltiesEarned: BigInt!
+  activeListings: BigInt!
+  highestSalePrice: BigInt!
+  averageSalePrice: BigInt!
+}
+
+type TrendingSong @entity {
+  id: ID!
+  song: Song!
+  period: String!                  # daily, weekly, monthly
+  sales: BigInt!
+  volume: BigInt!
+  tips: BigInt!
+  trendingScore: BigInt!
+  rank: BigInt!
+  previousRank: BigInt!
+  rankChange: BigInt!
+}
+
+type PlatformStats @entity {
+  id: ID!                          # "global"
+  totalUsers: BigInt!
+  totalArtists: BigInt!
+  totalSongs: BigInt!
+  totalAlbums: BigInt!
+  totalSales: BigInt!
+  totalVolume: BigInt!
+  totalRoyalties: BigInt!
+  activeListings: BigInt!
+  sales24h: BigInt!
+  volume24h: BigInt!
+}
+```
+
+### Data Flow
+
+| Data Type | Source | Storage |
+|-----------|--------|---------|
+| Social Posts | User Action | Somnia Data Streams |
+| Likes/Comments | User Action | Somnia Data Streams |
+| Play Events | Music Player | Somnia Data Streams |
+| BXP Rewards | System | Somnia Data Streams |
+| NFT Minting | Smart Contract | Subgraph |
+| NFT Sales | Smart Contract | Subgraph |
+| Marketplace Listings | Smart Contract | Subgraph |
+| On-chain Tips | Smart Contract | Subgraph |
+| Price History | Smart Contract | Subgraph |
+
+### Query Examples
+
+**Get User Profile with NFT Stats:**
+```graphql
+query GetUserProfile($address: ID!) {
+  userProfile(id: $address) {
+    username
+    displayName
+    isArtist
+    isVerified
+    nftStats {
+      songsOwned
+      songsCreated
+      totalSalesVolume
+      totalRoyaltiesEarned
+    }
+    songs(first: 10, orderBy: createdAt, orderDirection: desc) {
+      tokenId
+      title
+      price
+      isListed
+    }
+  }
+}
+```
+
+**Get Trending Songs:**
+```graphql
+query GetTrendingSongs($period: String!) {
+  trendingSongs(
+    where: { period: $period }
+    orderBy: rank
+    orderDirection: asc
+    first: 100
+  ) {
+    song {
+      tokenId
+      title
+      artist { username }
+      coverHash
+    }
+    trendingScore
+    rank
+    rankChange
+    sales
+    volume
+  }
+}
+```
+
+**Get Platform Statistics:**
+```graphql
+query GetPlatformStats {
+  platformStats(id: "global") {
+    totalUsers
+    totalArtists
+    totalSongs
+    totalSales
+    totalVolume
+    sales24h
+    volume24h
+    activeListings
+  }
+}
+```
+## Frontend Architecture
+
+Built with modern React ecosystem:
+
+- **React 18** with TypeScript
+- **Vite** for fast development and building
+- **Wagmi + Viem** for blockchain interactions
+- **Sequence Wallet** for Web3 authentication
+- **TanStack Query** for data fetching and caching
+- **Radix UI + Tailwind CSS** for UI components
+- **Apollo Client** for GraphQL queries
+
+### Key Services
+
+| Service | Purpose |
+|---------|---------|
+| `musicGenerationService` | AI music generation engine |
+| `playlistService` | Playlist CRUD with multi-publisher support |
+| `tipService` | STT tipping with background processing |
+| `bxpService` | BeatsXP rewards and gamification |
+| `somniaDatastreamService` | Real-time data synchronization |
+| `notificationService` | Push notifications and alerts |
+| `encryptedMessagingService` | Secure direct messaging |
+
+---
+
+# Problems and Solutions
+
+## Barriers to Music Creation
+
+**Problem**: Music creation is often constrained by expensive equipment, complex software, and technical skills.
+
+**HiBeats' Solution**: AI-powered music generation enables anyone to create professional-quality compositions from simple text prompts, removing the need for traditional production tools.
+
+## Unfair Music Industry Monetization
+
+**Problem**: Traditional music platforms suffer from unfair revenue distribution and high platform fees.
+
+**HiBeats' Solution**: Blockchain-based NFT minting and direct peer-to-peer trading ensures creators maintain full ownership and receive fair compensation through automated royalty systems.
+
+## Limited Music Discovery
+
+**Problem**: Current platforms rely on algorithmic recommendations that limit music discovery.
+
+**HiBeats' Solution**: Open, community-driven platform with social features, playlists, and trending discovery without algorithmic limitations.
+
+## Inflexible Creator Monetization
+
+**Problem**: Traditional platforms offer limited monetization options.
+
+**HiBeats' Solution**: Multiple native monetization streams including NFT sales, tipping system, and community engagement rewards through the BXP system.
+
+---
+
+# How We Achieve AI-Powered Music Creation
+
+<img width="1200" height="800" alt="hibeats-ai-music-flow" src="https://github.com/user-attachments/assets/467a3743-21f4-4749-9723-45dbcf34ca09" />
+
+<img width="2678" height="1422" alt="diagram-export-9-27-2025-4_44_53-PM" src="https://github.com/user-attachments/assets/ce910e75-ed0a-497b-b202-eea63f41c564" />
+
+### Music Generation Flow
+
+1. **User Input**: Users enter creative prompts with style preferences, lyrics, and model selection
+2. **AI Processing**: The AI engine processes the request using the selected model
+3. **Real-time Tracking**: Generation status tracked via polling with exponential backoff
+4. **NFT Minting**: Completed music automatically prepared for NFT minting
+5. **Blockchain Storage**: Metadata stored on Somnia blockchain with IPFS for audio files
+
+### Optimistic Updates
+
+The platform uses optimistic UI updates for instant feedback:
+
+```typescript
+// Example: Playlist creation with optimistic update
+const playlist = { id, owner, title, ... };
+this.playlistCache.set(playlistId, playlist); // Immediate cache update
+await this.writePlaylistToBlockchain(playlist); // Background write
 ```
 
 ---
 
-## 🚀 Quick Start
+# Platform Features
 
-### 1. Clone Repository
+## Music Generation
+
+- **AI Models**: V3.5, V4, V4.5
+- **Custom Lyrics**: Support for user-provided lyrics
+- **Instrumental Mode**: Generate music without vocals
+- **Style Customization**: Genre, mood, and style parameters
+- **Vocal Options**: Male/female vocal selection
+
+## Social Features
+
+- **User Profiles**: Customizable creator profiles
+- **Social Feed**: Posts, likes, comments, reposts
+- **Following System**: Follow favorite artists
+- **Direct Messages**: Encrypted messaging
+- **Notifications**: Real-time alerts
+
+## Marketplace
+
+- **NFT Trading**: Buy and sell music NFTs
+- **Price Discovery**: Market-driven pricing
+- **Royalty Distribution**: Automated creator compensation
+- **Collection Management**: Organize owned NFTs
+
+## Playlists
+
+- **CRUD Operations**: Create, read, update, delete
+- **Track Management**: Add/remove tracks
+- **Collaboration**: Multi-editor support
+- **Social Features**: Follow, like, share playlists
+
+## Rewards (BXP)
+
+- **Activity Rewards**: XP for engagement
+- **Daily Caps**: Fair distribution limits
+- **Streaks**: Bonus for consecutive activity
+- **Leaderboards**: Competitive rankings
+- **Achievements**: Milestone rewards
+
+---
+
+# Getting Started
+
+## Prerequisites
+
+- Node.js 18+
+- npm or bun
+- Sequence Wallet or compatible Web3 wallet
+
+## Installation
 
 ```bash
-git clone https://github.com/ngdkLabs/Hibeats-Web3-Socialfi.git
-cd Hibeats-Web3-Socialfi
-```
+# Clone the repository
+git clone https://github.com/NGDK101/Hibeats--Somnia-Defi-Mini-Hackathon.git
 
-### 2. Install Dependencies
-
-#### Frontend
-```bash
+# Install dependencies
 npm install
-# atau
-yarn install
-# atau
-bun install
-```
 
-#### Smart Contracts
-```bash
-cd smartcontract
-npm install
-cd ..
-```
-
-#### Subgraph
-```bash
-cd smartcontract/subgraph
-npm install
-cd ../..
-```
-
-### 3. Environment Setup
-
-#### Frontend Environment
-Copy `.env.example` ke `.env` dan isi dengan konfigurasi Anda:
-
-```bash
+# Configure environment variables
 cp .env.example .env
-```
-
-Edit `.env`:
-```env
-# Sequence Wallet Configuration
-VITE_SEQUENCE_PROJECT_ACCESS_KEY=your_sequence_project_key
-VITE_SEQUENCE_WAAS_CONFIG_KEY=your_waas_config_key
-
-# Somnia Network
-VITE_SOMNIA_RPC_URL=https://dream-rpc.somnia.network
-VITE_SOMNIA_CHAIN_ID=50311
-
-# Subgraph Endpoint
-VITE_SUBGRAPH_URL=your_subgraph_endpoint
-
-# IPFS Configuration
-VITE_PINATA_API_KEY=your_pinata_api_key
-VITE_PINATA_SECRET_KEY=your_pinata_secret_key
-
-# Suno AI (Optional)
-VITE_SUNO_API_KEY=your_suno_api_key
-```
-
-#### Smart Contract Environment
-```bash
-cd smartcontract
-cp .env.example .env
-```
-
-Edit `smartcontract/.env`:
-```env
-PRIVATE_KEY=your_private_key_without_0x_prefix
-INFURA_KEY=your_infura_project_id
-ETHERSCAN_API_KEY=your_etherscan_api_key
-SOMNIA_RPC_URL=https://dream-rpc.somnia.network
-SOMNIA_EXPLORER_URL=https://shannon-explorer.somnia.network
-```
-
-#### Subgraph Environment
-```bash
-cd smartcontract/subgraph
-cp .env.example .env
-```
-
-Edit `smartcontract/subgraph/.env`:
-```env
-ORMI_DEPLOY_KEY=your_ormi_deploy_key
-```
-
-### 4. Compile Smart Contracts
-
-```bash
-cd smartcontract
-npm run compile
-```
-
-### 5. Deploy Smart Contracts (Optional)
-
-#### Deploy ke Somnia Testnet
-```bash
-npm run deploy:somnia
-```
-
-#### Deploy ke Local Network
-```bash
-# Terminal 1 - Start local node
-npm run node
-
-# Terminal 2 - Deploy contracts
-npm run deploy:local
-```
-
-### 6. Setup Subgraph (Optional)
-
-```bash
-cd smartcontract/subgraph
-
-# Generate types
-npm run codegen
-
-# Build subgraph
-npm run build
-
-# Deploy to Somnia
-npm run deploy
-```
-
-### 7. Run Development Server
-
-```bash
-# Kembali ke root directory
-cd ../..
 
 # Start development server
 npm run dev
 ```
 
-Aplikasi akan berjalan di `http://localhost:8080`
+## Environment Variables
 
-## 📁 Project Structure
+```env
+# Somnia Network
+VITE_SOMNIA_RPC_URL=https://dream-rpc.somnia.network
+VITE_SOMNIA_WS_URL=wss://dream-rpc.somnia.network/ws
 
-```
-hibeats/
-├── public/                      # Static assets
-├── scripts/                     # Utility scripts
-├── smartcontract/              # Smart contracts
-│   ├── contracts/              # Solidity contracts
-│   │   ├── SongNFT.sol
-│   │   ├── UserProfile.sol
-│   │   ├── AlbumManager.sol
-│   │   ├── PlaylistManager.sol
-│   │   ├── Marketplace.sol
-│   │   └── TippingSystem.sol
-│   ├── scripts/                # Deployment scripts
-│   ├── test/                   # Contract tests
-│   ├── subgraph/              # The Graph subgraph
-│   │   ├── schema.graphql     # GraphQL schema
-│   │   ├── subgraph.yaml      # Subgraph manifest
-│   │   └── src/               # Mapping handlers
-│   └── hardhat.config.js      # Hardhat configuration
-├── src/
-│   ├── components/            # React components
-│   │   ├── ui/               # Shadcn UI components
-│   │   ├── feed/             # Feed components
-│   │   └── generate/         # Music generation
-│   ├── contexts/             # React contexts
-│   ├── hooks/                # Custom hooks
-│   ├── lib/                  # Libraries & utilities
-│   │   ├── abis/            # Contract ABIs
-│   │   └── web3-config.ts   # Web3 configuration
-│   ├── pages/               # Page components
-│   ├── services/            # API services
-│   ├── types/               # TypeScript types
-│   └── utils/               # Utility functions
-├── .env.example             # Environment template
-├── package.json
-├── vite.config.ts
-└── README.md
+# AI Music Generation
+VITE_AI_API_KEY=your_ai_api_key
+
+# Sequence Wallet
+VITE_SEQUENCE_PROJECT_ACCESS_KEY=your_sequence_key
+
+# Contract Addresses (auto-configured)
+VITE_CONTRACT_USER_PROFILE=0x6aD6eBc95116A81CB89FCB2676E829b5dabF7536
+VITE_CONTRACT_SONG_NFT=0xc9Ab73b5f988826943e4f63E89ed0841757CBD6c
 ```
 
-## 🔧 Available Scripts
-
-### Frontend
+## Available Scripts
 
 ```bash
-# Development
-npm run dev              # Start dev server (port 8080)
-npm run build           # Production build
-npm run build:dev       # Development build
-npm run preview         # Preview production build
-npm run lint            # Run ESLint
-
-# Schema Management
-npm run register:generated-music  # Register generated music schema
-npm run verify:generated-music    # Verify generated music schema
-npm run register:play-events      # Register play events schema
-npm run verify:play-events        # Verify play events schema
-npm run verify:schemas            # Verify all schemas
-npm run register:bxp              # Register BXP schemas
-npm run test:bxp                  # Test BXP system
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+npm run verify:env   # Verify environment variables
+npm run test:tip     # Test tipping system
+npm run test:playlist # Test playlist features
 ```
-
-### Smart Contracts
-
-```bash
-cd smartcontract
-
-# Development
-npm run compile         # Compile contracts
-npm run test           # Run tests
-npm run test:watch     # Run tests in watch mode
-npm run clean          # Clean artifacts
-
-# Deployment
-npm run node           # Start local Hardhat node
-npm run deploy:local   # Deploy to local network
-npm run deploy:somnia  # Deploy to Somnia testnet
-npm run deploy:sepolia # Deploy to Sepolia testnet
-
-# Verification
-npm run verify:somnia  # Verify on Somnia explorer
-npm run verify:sepolia # Verify on Etherscan
-```
-
-### Subgraph
-
-```bash
-cd smartcontract/subgraph
-
-npm run codegen        # Generate types from schema
-npm run build          # Build subgraph
-npm run deploy         # Deploy to Somnia subgraph
-npm run create-local   # Create local subgraph
-npm run deploy-local   # Deploy to local Graph node
-```
-
-## 🔑 Key Contracts
-
-### Deployed on Somnia Testnet
-
-Lihat file `smartcontract/deployments/somniaTestnet.json` untuk alamat contract yang sudah di-deploy.
-
-**Main Contracts:**
-- **SongNFT** - ERC-721 NFT untuk musik
-- **UserProfile** - Manajemen profil user
-- **AlbumManager** - Manajemen album
-- **PlaylistManager** - Manajemen playlist
-- **Marketplace** - NFT marketplace
-- **TippingSystem** - Sistem tipping
-
-## 🌐 Network Configuration
-
-### Somnia Testnet
-
-```javascript
-{
-  chainId: 50311,
-  name: "Somnia Testnet",
-  rpcUrl: "https://dream-rpc.somnia.network",
-  explorerUrl: "https://shannon-explorer.somnia.network",
-  nativeCurrency: {
-    name: "STT",
-    symbol: "STT",
-    decimals: 18
-  }
-}
-```
-
-## 🧪 Testing
-
-### Smart Contract Tests
-
-```bash
-cd smartcontract
-npm test
-```
-
-### Integration Tests
-
-```bash
-# Test BXP system
-npm run test:bxp
-
-# Test play events
-npm run test:play-events
-```
-
-## 🚀 Deployment
-
-### Deploy ke Vercel
-
-1. **Install Vercel CLI** (optional)
-```bash
-npm install -g vercel
-```
-
-2. **Build Production**
-```bash
-npm run build
-```
-
-3. **Deploy**
-```bash
-vercel
-# atau
-vercel --prod
-```
-
-### Konfigurasi Vercel
-
-File `vercel.json` sudah dikonfigurasi untuk:
-- ✅ SPA routing (semua routes ke index.html)
-- ✅ Asset caching (1 tahun untuk /assets/*)
-- ✅ Static file handling (favicon, robots.txt)
-
-### Environment Variables di Vercel
-
-Tambahkan environment variables berikut di Vercel dashboard:
-
-```
-VITE_SEQUENCE_PROJECT_ACCESS_KEY
-VITE_SEQUENCE_WAAS_CONFIG_KEY
-VITE_SOMNIA_RPC_URL
-VITE_SOMNIA_CHAIN_ID
-VITE_SUBGRAPH_URL
-VITE_PINATA_API_KEY
-VITE_PINATA_SECRET_KEY
-VITE_SUNO_API_KEY
-```
-
-### Build Settings di Vercel
-
-- **Framework Preset**: Vite
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Install Command**: `npm install`
-- **Node Version**: 18.x atau lebih tinggi
-
-## 📚 Documentation
-
-### Smart Contracts
-- Lihat `smartcontract/README.md` untuk dokumentasi contract
-- Lihat `smartcontract/DEPLOYMENT_SUMMARY.md` untuk deployment info
-
-### Subgraph
-- Lihat `smartcontract/subgraph/DEPLOYMENT_SUCCESS_v4.4.0.md`
-- Lihat `smartcontract/subgraph/SUBGRAPH_CHECKLIST.md`
-
-## 🔐 Security
-
-- **JANGAN** commit file `.env` ke repository
-- **JANGAN** share private keys atau API keys
-- Gunakan `.env.example` sebagai template
-- Untuk production, gunakan environment variables yang aman
-
-## 🤝 Contributing
-
-1. Fork repository
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Troubleshooting
-
-### Common Issues
-
-**1. Node polyfill errors**
-```bash
-# Install polyfills
-npm install buffer process
-```
-
-**2. Contract compilation errors**
-```bash
-cd smartcontract
-npm run clean
-npm run compile
-```
-
-**3. Subgraph deployment fails**
-```bash
-cd smartcontract/subgraph
-npm run codegen
-npm run build
-```
-
-**4. Wallet connection issues**
-- Pastikan MetaMask terhubung ke Somnia Testnet
-- Clear browser cache dan reconnect wallet
-- Check RPC endpoint di network settings
-
-**5. Transaction fails**
-- Pastikan memiliki STT token untuk gas
-- Check contract addresses di deployment file
-- Verify network configuration
-
-## 📞 Support
-
-- **GitHub Issues**: [Create an issue](https://github.com/ngdkLabs/Hibeats-Web3-Socialfi/issues)
-- **Documentation**: Check `/smartcontract` and `/smartcontract/subgraph` folders
-
-## 🎯 Roadmap
-
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics dashboard
-- [ ] NFT royalty distribution
-- [ ] Cross-chain bridge
-- [ ] DAO governance
-- [ ] Live streaming features
-- [ ] Enhanced AI music generation
-- [ ] Social token integration
-
-## 🌟 Acknowledgments
-
-- **Somnia Network** - Blockchain infrastructure
-- **0xSequence** - Wallet & session management
-- **The Graph** - Indexing protocol
-- **OpenZeppelin** - Smart contract libraries
-- **Shadcn/ui** - UI components
 
 ---
 
-Built with ❤️ by ngdkLabs
+# Network Information
+
+## Somnia Testnet
+
+| Property | Value |
+|----------|-------|
+| **Chain ID** | 50312 |
+| **Network Name** | Somnia Testnet |
+| **Native Currency** | STT (18 decimals) |
+| **RPC URL** | https://dream-rpc.somnia.network |
+| **WebSocket** | wss://dream-rpc.somnia.network/ws |
+| **Block Explorer** | https://shannon-explorer.somnia.network |
+
+---
+
+## 🔗 Links
+
+- 🌐 Website: [https://www.hibeats.xyz/](https://www.hibeats.xyz/)
+- 🏢 Organization: [https://github.com/ngdkLabs/Hibeats-Web3-Socialfi/](https://github.com/ngdkLabs/Hibeats-Web3-Socialfi/)
+- 📑 Documentation: [Comprehensive Documentation]()
+- 🎥 Demo Video: [Platform Walkthrough](https://drive.google.com/drive/folders/1GRXqQw2aVn-GUDIRMctkXrcnAAhMlRvB)
+
+---
+
+## License
+
+MIT License © 2025 HiBeats
