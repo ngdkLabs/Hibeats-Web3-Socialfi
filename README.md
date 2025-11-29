@@ -995,7 +995,8 @@ Built with modern React ecosystem:
 
 <img width="1200" height="800" alt="hibeats-ai-music-flow" src="https://github.com/user-attachments/assets/467a3743-21f4-4749-9723-45dbcf34ca09" />
 
-<img width="2678" height="1422" alt="diagram-export-9-27-2025-4_44_53-PM" src="https://github.com/user-attachments/assets/ce910e75-ed0a-497b-b202-eea63f41c564" />
+<img width="2683" height="1350" alt="diagram-export-11-29-2025-11_38_45-PM" src="https://github.com/user-attachments/assets/d76518b0-c763-4117-bab7-b787727bc2ee" />
+
 
 ### Music Generation Flow
 
